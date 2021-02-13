@@ -1,0 +1,16 @@
+{
+"companyName": "OblivionSoft",
+"productName": "MouseDungeon",
+"productVersion": "0.1",
+"dataUrl": "MouseDungeon.data.unityweb",
+"wasmCodeUrl": "MouseDungeon.wasm.code.unityweb",
+"wasmFrameworkUrl": "MouseDungeon.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.1f1"
+}
