@@ -8,19 +8,18 @@
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
-
     <script src="vkBridge.js"></script>
 	<script>    
 	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json", {onProgress: UnityProgress});
 
 	vkBridge.send("VKWebAppInit", {});
 
-	string userId = new URL(window.location.href).searchParams.get('viewer_id');
-	unityInstance.SendMessage("VKController", "RecieveUserId", userId);
+	//string userId = new URL(window.location.href).searchParams.get('viewer_id');
+	//unityInstance.SendMessage("VKController", "RecieveUserId", userId);
 
 	function Index_WallPost(level) {
 		vkBridge.send("VKWebAppShowWallPostBox", {
-			"message": "Я дошел до " + level + " уровня!",
+			"message": "Я дошел до уровня!"
 			"attachments": ""
 		});
 	}
@@ -54,7 +53,7 @@
   </head>
   <body>
     <div class="webgl-content">
-      <div id="unityContainer" style="width: 100px; height: 100px"></div>
+      <div id="unityContainer" style="width: 800px; height: 800px"></div>
       <!-- <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
