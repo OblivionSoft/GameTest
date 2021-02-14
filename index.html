@@ -3,33 +3,58 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | MouseDungeon</title>
+    <title>Mouse Dungeon</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
 
     <script src="vkBridge.js"></script>
-    <script>
-	vkBridge.send("VKWebAppInit", {});
-			
-	function Index_WallPost() {
-		//alert('Hello from index.html file!');
-		vkBridge.send("VKWebAppShowOrderBox", {type:"item", item:"item_id_123"});
-	}
-	    
+	<script>    
 	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json", {onProgress: UnityProgress});
-    </script>
-	  
+
+	vkBridge.send("VKWebAppInit", {});
+
+	function Index_WallPost(level) {
+		vkBridge.send("VKWebAppShowWallPostBox", {
+			"message": "Я дошел до " + level + " уровня!",
+			"attachments": "photo-1_456239099"
+		});
+	}
+
+	function Index_ShowAd_Browser() {
+		vkBridge.send("VKWebAppShowWallPostBox", {
+			"message": "Я сижу с браузера"
+		});
+	}
+
+	function Index_ShowAd_Mobile() {
+		vkBridge.send("VKWebAppShowWallPostBox", {
+			"message": "Я сижу с мобилы"
+		});
+	}
+
+	//function Index_ShowAd() {
+	//	bridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
+	//	.then(data => console.log(data.result))
+    //    .catch(error => console.log(error));
+	//}
+
+	//function Index_InviteFriend() {
+	//	bridge.sendPromise("VKWebAppShowInviteBox", {})
+    //    .then(data => console.log(data.success))
+    //    .catch(error => console.log(error));
+	//}
+    </script>  
   </head>
   <body>
     <div class="webgl-content">
-      <div id="unityContainer" style="width: 900px; height: 600px"></div>
-      <div class="footer">
+      <div id="unityContainer" style="width: 640px; height: 640px"></div>
+      <!-- <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
         <div class="title">MouseDungeon</div>
-      </div>
+      </div> -->
     </div>
   </body>
 </html>
