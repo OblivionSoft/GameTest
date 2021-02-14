@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
@@ -14,6 +14,9 @@
 	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json", {onProgress: UnityProgress});
 
 	vkBridge.send("VKWebAppInit", {});
+
+	string userId = new URL(window.location.href).searchParams.get('viewer_id');
+	unityInstance.SendMessage("VKController", "RecieveUserId", userId);
 
 	function Index_WallPost(level) {
 		vkBridge.send("VKWebAppShowWallPostBox", {
