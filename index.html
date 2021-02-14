@@ -14,22 +14,23 @@
 	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json", {onProgress: UnityProgress});
 
 	vkBridge.send("VKWebAppInit", {});
-
 	var userId = new URL(window.location.href).searchParams.get('viewer_id');
+	
+	function Index_SetUserId() {
+		unityInstance.SendMessage('VKController', 'SetUserId', userId);
+	}
 
 	function Index_WallPost(level) {
-		unityInstance.SendMessage('VKController', 'SetUserId', "" + userId);
 		vkBridge.send("VKWebAppShowWallPostBox", {
-			"message": "Мой уровень: " + level + " Id: " + userId,
+			"message": "Мой уровень: " + level,
 			"attachments": ""
 		});
 	}
 
 	function Index_ShowAd_Browser() {
-		vkBridge.send("VKWebAppShowWallPostBox", {
-			"message": "Я сижу с браузера",
-			"attachments": ""
-		});
+		vkBridge.send("VKWebAppShowNativeAds", {ad_format:"preloader"})
+         	.then(data => console.log(data.result))
+       		.catch(error => console.log(error));
 	}
 
 	function Index_ShowAd_Mobile() {
