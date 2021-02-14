@@ -10,7 +10,7 @@
     <script src="Build/UnityLoader.js"></script>
     <script src="vkBridge.js"></script>
 	<script>
-	UnityLoader.compatibilityCheck=function(e,t,r){t();};    
+	UnityLoader.compatibilityCheck=function(e,t,r){t();}    
 	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json", {onProgress: UnityProgress});
 
 	vkBridge.send("VKWebAppInit", {});
