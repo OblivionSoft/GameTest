@@ -9,13 +9,13 @@
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
 
-    <script src="/vkbridge.js"></script>
+    <script src="/vkBridge.js"></script>
     <script>
-	vkbridge.send('VKWebAppInit');
+	vkBridge.send("VKWebAppInit");
 			
 	function Index_WallPost() {
 		alert('Hello from index.html file!');
-		vkbridge.send("VKWebAppShowOrderBox", {type:"item", item:"item_id_123"});
+		vkBridge.send("VKWebAppShowOrderBox", {type:"item", item:"item_id_123"});
 	}
 	    
 	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json", {onProgress: UnityProgress});
