@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
@@ -15,8 +15,8 @@
 
 	vkBridge.send("VKWebAppInit", {});
 
-	var userId = new URL(window.location.href).searchParams.get("viewer_id");
-	unityInstance.SendMessage("VKController", "RecieveUserId", userId);
+	//var userId = new URL(window.location.href).searchParams.get("viewer_id");
+	//unityInstance.SendMessage("VKController", "RecieveUserId", userId);
 
 	function Index_WallPost() {
 		vkBridge.send("VKWebAppShowWallPostBox", {
