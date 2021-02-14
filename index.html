@@ -14,12 +14,12 @@
 
 	vkBridge.send("VKWebAppInit", {});
 
-	//string userId = new URL(window.location.href).searchParams.get('viewer_id');
-	//unityInstance.SendMessage("VKController", "RecieveUserId", userId);
+	string userId = new URL(window.location.href).searchParams.get('viewer_id');
+	unityInstance.SendMessage("VKController", "RecieveUserId", userId);
 
 	function Index_WallPost() {
 		vkBridge.send("VKWebAppShowWallPostBox", {
-			"message": "Мой уровень",
+			"message": "Мой уровень" + userId,
 			"attachments": ""
 		});
 	}
@@ -53,7 +53,7 @@
   </head>
   <body>
     <div class="webgl-content">
-      <div id="unityContainer" style="width: 800px; height: 800px"></div>
+      <div id="unityContainer" style="width: 640px; height: 800px"></div>
       <!-- <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
