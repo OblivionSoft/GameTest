@@ -17,7 +17,7 @@
 	var userId = new URL(window.location.href).searchParams.get('viewer_id');
 	unityInstance.SendMessage("VKController", "RecieveUserId", userId);
 
-	function Index_WallPost(var level) {
+	function Index_WallPost(level) {
 		vkBridge.send("VKWebAppShowWallPostBox", {
 			"message": "Мой уровень: " + level,
 			"attachments": ""
