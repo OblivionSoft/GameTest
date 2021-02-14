@@ -2051,7 +2051,9 @@ var UnityLoader = UnityLoader || {
             }()
         }
     }(),
-    compatibilityCheck: function(e, t, r) { t(); },
+    compatibilityCheck: function(e, t, r) {
+	t()
+    },
     Blobs: {},
     loadCode: function(e, t, r, n) {
         var o = [].slice.call(UnityLoader.Cryptography.md5(t)).map(function(e) {
