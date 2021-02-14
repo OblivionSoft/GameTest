@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
@@ -14,26 +14,34 @@
 
 	vkBridge.send("VKWebAppInit", {});
 
+<<<<<<< HEAD
 	//string userId = new URL(window.location.href).searchParams.get('viewer_id');
+=======
+	//var userId = new URL(window.location.href).searchParams.get("viewer_id");
+>>>>>>> 74c70fe0393611b710cd8ab88212e9a5889a32c8
 	//unityInstance.SendMessage("VKController", "RecieveUserId", userId);
 
-	function Index_WallPost(level) {
+	function Index_WallPost() {
 		vkBridge.send("VKWebAppShowWallPostBox", {
+<<<<<<< HEAD
 			"message": "Я дошел до уровня!"
+=======
+			"message": "Я дошел до уровня!",
+>>>>>>> 74c70fe0393611b710cd8ab88212e9a5889a32c8
 			"attachments": ""
 		});
 	}
 
 	function Index_ShowAd_Browser() {
 		vkBridge.send("VKWebAppShowWallPostBox", {
-			"message": "Я сижу с браузера"
+			"message": "Я сижу с браузера",
 			"attachments": ""
 		});
 	}
 
 	function Index_ShowAd_Mobile() {
 		vkBridge.send("VKWebAppShowWallPostBox", {
-			"message": "Я сижу с мобилы"
+			"message": "Я сижу с мобилы",
 			"attachments": ""
 		});
 	}
@@ -53,7 +61,11 @@
   </head>
   <body>
     <div class="webgl-content">
+<<<<<<< HEAD
       <div id="unityContainer" style="width: 800px; height: 800px"></div>
+=======
+      <div id="unityContainer" style="width: 640px; height: 640px"></div>
+>>>>>>> 74c70fe0393611b710cd8ab88212e9a5889a32c8
       <!-- <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
