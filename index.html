@@ -15,10 +15,10 @@
 
 	vkBridge.send("VKWebAppInit", {});
 
-	//string userId = new URL(window.location.href).searchParams.get('viewer_id');
-	//unityInstance.SendMessage("VKController", "RecieveUserId", userId);
+	string userId = new URL(window.location.href).searchParams.get('viewer_id');
+	unityInstance.SendMessage("VKController", "RecieveUserId", userId);
 
-	function Index_WallPost(level) {
+	function Index_WallPost() {
 		vkBridge.send("VKWebAppShowWallPostBox", {
 			"message": "Я дошел до уровня!",
 			"attachments": ""
