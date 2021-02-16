@@ -1,48 +1,38 @@
 <!DOCTYPE html>
-
 <html lang="en-us">
-
 <head>
- <meta charset="utf-8">
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+<meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>MouseDungeon</title>
 
-
 <script src="Build/UnityLoader.js"></script>
-
 <script src="vkBridge.js"></script>
 <script type="text/javascript" src="//vk.com/js/api/xd_connection.js?2" charset="utf-8"></script>
 <script type="text/javascript" src="//ad.mail.ru/static/admanhtml/rbadman-html5.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="//vk.com/js/api/adman_init.js" charset="utf-8"></script>
 
 <script>
+	window.addEventListener('load', function() {
+	admanInit({
+		user_id: userId,
+		app_id: 7760038,
+		mobile: true,
+		type: 'preloader',
+		params: {preview: 1}
+	}, onAdsReady, onNoAds);
 
- window.addEventListener('load', function() {
-    admanInit({
-      user_id: userId,
-      app_id: 7760038,
-      mobile: true,
-      type: 'preloader'
-      params: {preview: 1}
-    }, onAdsReady, onNoAds);
- 
-    function onAdsReady(adman) {
-      adman.onStarted(function () {});
-      adman.onCompleted(function() {});
-      adman.onSkipped(function() {});      
-      adman.onClicked(function() {}); 
-      adman.start('preroll');
-    };
-    function onNoAds() {};
-  });
+	function onAdsReady (adman) {
+		adman.onStarted(function () {});
+		adman.onCompleted(function() {});
+		adman.onSkipped(function() {});      
+		adman.onClicked(function() {}); 
+		adman.start('preroll');
+	};
+	function onNoAds () {};
+	});
 </script>
 
-
 <script>
-
-	UnityLoader.compatibilityCheck=function(e,t,r){t();};
+	UnityLoader.compatibilityCheck = function(e,t,r){ t(); };
 	UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json");
 
 	vkBridge.send("VKWebAppInit", {});
@@ -54,7 +44,7 @@
 	
 	function Index_WallPost(level) {
 		vkBridge.send("VKWebAppShowWallPostBox", {
-			"message": "Мой рекорд: " + level + "уровень!",
+			"message": "РњРѕР№ СЂРµРєРѕСЂРґ: " + level + "СѓСЂРѕРІРµРЅСЊ!",
 			"attachments": ""
 		});
 	}
@@ -68,16 +58,9 @@
 		//.catch(error => console.log(error));
 	//}
 </script>
-
-
 </head>
-
-
 <body>
-
-<div class="webgl-content" style="width: 100%; height: 100%></div>
-<div id="unityContainer" style="width: 100%; height: 100%; margin: auto"></div>
-
+	<!-- <div class="webgl-content" style="width: 100%; height: 100%> -->
+	<div id="unityContainer" style="width: 100%; height: 100%; margin: auto"></div>
 </body>
-
 </html>
