@@ -45,8 +45,9 @@
 	
 	function Index_WallPost(level) {
 		vkBridge.send("VKWebAppShowWallPostBox", {
+			"owner_id": userId,
 			"message": "Мой рекорд: " + level + " уровень!",
-			"attachments": photo527676448_457239040
+			"attachments": "photo527676448_457239040"
 		});
 	}
 
