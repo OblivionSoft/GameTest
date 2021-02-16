@@ -1,66 +1,83 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Mouse Dungeon</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>
-    <script src="Build/UnityLoader.js"></script>
-    <script src="vkBridge.js"></script>
-	<script>
+
+<head>
+ <meta charset="utf-8">
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>MouseDungeon</title>
+
+
+<script src="Build/UnityLoader.js"></script>
+
+<script src="vkBridge.js"></script>
+<script type="text/javascript" src="//vk.com/js/api/xd_connection.js?2" charset="utf-8"></script>
+<script type="text/javascript" src="//ad.mail.ru/static/admanhtml/rbadman-html5.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="//vk.com/js/api/adman_init.js" charset="utf-8"></script>
+
+<script>
+
+ window.addEventListener('load', function() {
+    admanInit({
+      user_id: userId,
+      app_id: 7760038,
+      mobile: true,
+      type: 'preloader'
+      params: {preview: 1}
+    }, onAdsReady, onNoAds);
+ 
+    function onAdsReady(adman) {
+      adman.onStarted(function () {});
+      adman.onCompleted(function() {});
+      adman.onSkipped(function() {});      
+      adman.onClicked(function() {}); 
+      adman.start('preroll');
+    };
+    function onNoAds() {};
+  });
+</script>
+
+
+<script>
+
 	UnityLoader.compatibilityCheck=function(e,t,r){t();};
-	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json", {onProgress: UnityProgress});
+	UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json");
 
 	vkBridge.send("VKWebAppInit", {});
 	var userId = new URL(window.location.href).searchParams.get('viewer_id');
-	
+
 	function Index_SetUserId() {
 		unityInstance.SendMessage('VKController', 'SetUserId', userId);
 	}
-
+	
 	function Index_WallPost(level) {
 		vkBridge.send("VKWebAppShowWallPostBox", {
-			"message": "ÐœÐ¾Ð¹ ÑƒÑ€Ð¾Ð²ÐµÐ½ÑŒ: " + level,
-			"attachments": ""
-		});
-	}
-
-	function Index_ShowAd_Browser() {
-		vkBridge.send("VKWebAppShowNativeAds", {ad_format:"preloader"})
-         	.then(data => console.log(data.result))
-       		.catch(error => console.log(error));
-	}
-
-	function Index_ShowAd_Mobile() {
-		vkBridge.send("VKWebAppShowWallPostBox", {
-			"message": "Ð¯ ÑÐ¸Ð¶Ñƒ Ñ Ð¼Ð¾Ð±Ð¸Ð»Ñ‹",
-			"attachments": ""
+			"message": "Ìîé ðåêîðä: " + level + "óðîâåíü!",
+			"attachments": "Other/wallpost.png",
 		});
 	}
 
 	//function Index_ShowAd() {
-	//	bridge.send("VKWebAppShowNativeAds", {ad_format:"interstitial"})
-	//	.then(data => console.log(data.result))
-    //    .catch(error => console.log(error));
 	//}
-
+	
 	//function Index_InviteFriend() {
-	//	bridge.sendPromise("VKWebAppShowInviteBox", {})
-    //    .then(data => console.log(data.success))
-    //    .catch(error => console.log(error));
+		//bridge.sendPromise("VKWebAppShowInviteBox", {})
+		//.then(data => console.log(data.success))
+		//.catch(error => console.log(error));
 	//}
-    </script>  
-  </head>
-  <body>
-    <div class="webgl-content">
-      <div id="unityContainer" style="width: 640px; height: 640px"></div>
-      <!-- <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">MouseDungeon</div>
-      </div> -->
-    </div>
-  </body>
+</script>
+
+
+</head>
+
+
+<body>
+
+<div class="webgl-content" style="width: 100%; height: 100%></div>
+<div id="unityContainer" style="width: 100%; height: 100%; margin: auto"></div>
+
+</body>
+
 </html>
