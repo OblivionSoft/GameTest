@@ -11,7 +11,7 @@
 <script type="text/javascript" src="//vk.com/js/api/adman_init.js" charset="utf-8"></script>
 
 <script>
-	window.addEventListener('load', function() {
+	/*window.addEventListener('load', function() {
 	admanInit({
 		user_id: userId,
 		app_id: 7760038,
@@ -29,11 +29,12 @@
 	};
 	function onNoAds () {};
 	});
+	*/
 </script>
 
 <script>
 	UnityLoader.compatibilityCheck = function(e,t,r){ t(); };
-	UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json");
+	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json");
 
 	vkBridge.send("VKWebAppInit", {});
 	var userId = new URL(window.location.href).searchParams.get('viewer_id');
