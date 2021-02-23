@@ -34,7 +34,7 @@
 	//UnityLoader.compatibilityCheck = function(e,t,r){ t(); };
 	//var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json");
 
-	createUnityInstance(document.querySelector("#unity-canvas"),{
+	var unityInstance = createUnityInstance(document.querySelector("#unity-canvas"),{
 		dataUrl: "Build/FinalBuild.data.br",
 		frameworkUrl: "Build/FinalBuild.framework.js.br",
 		codeUrl: "Build/FinalBuild.wasm.br",
