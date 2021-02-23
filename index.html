@@ -9,6 +9,10 @@
 <script type="text/javascript" src="//vk.com/js/api/xd_connection.js?2" charset="utf-8"></script>
 <script type="text/javascript" src="//ad.mail.ru/static/admanhtml/rbadman-html5.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="//vk.com/js/api/adman_init.js" charset="utf-8"></script>
+</head>
+
+<body style="text-align: center">
+<canvas id="unity-canvas" style="width: 900px; height: 600px; background: #262020"></canvas>
 
 <script>
 	/*window.addEventListener('load', function() {
@@ -33,8 +37,25 @@
 </script>
 
 <script>
-	UnityLoader.compatibilityCheck = function(e,t,r){ t(); };
-	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json");
+	//UnityLoader.compatibilityCheck = function(e,t,r){ t(); };
+	//var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json");
+
+	createUnityInstance(document.querySelector("#unity-canvas"),{
+
+		dataUrl: "Build/FinalBuild.data.br",
+
+		frameworkUrl: "Build/FinalBuild.framework.js.br",
+
+		codeUrl: "Build/FinalBuild.wasm.br",
+
+		streamingAssetsUrl: "StreamingAssets",
+		companyName: "Oblivion",
+
+		productName: "Roguelike",
+
+		productVersion: "1.0",
+
+	});
 
 	vkBridge.send("VKWebAppInit", {});
 	var userId = new URL(window.location.href).searchParams.get('viewer_id');
@@ -47,7 +68,7 @@
 		vkBridge.send("VKWebAppShowWallPostBox", {
 			"owner_id": userId,
 			"message": "Мой рекорд: " + level + " уровень!",
-			"attachments": "photo527676448_457239040,Играть:,https://vk.com/app7760038_239889416"
+			"attachments": "photo527676448_457239040,https://vk.com/app7760038_239889416"
 		});
 	}
 
@@ -66,8 +87,7 @@
 		//bridge.sendPromise("VKWebAppShowInviteBox");
 	//}
 </script>
-</head>
-<body>
+
 	<!-- <div class="webgl-content" style="width: 100%; height: 100%> -->
 	<div id="unityContainer" style="width: 100%; height: 640"></div>
 </body>
