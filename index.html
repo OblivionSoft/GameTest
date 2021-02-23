@@ -4,7 +4,8 @@
 <meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>MouseDungeon</title>
 
-<script src="Build/UnityLoader.js"></script>
+<script src="Build/FinalBuild.loader.js"></script>
+
 <script src="vkBridge.js"></script>
 <script type="text/javascript" src="//vk.com/js/api/xd_connection.js?2" charset="utf-8"></script>
 <script type="text/javascript" src="//ad.mail.ru/static/admanhtml/rbadman-html5.min.js" charset="utf-8"></script>
@@ -34,13 +35,12 @@
 	function onNoAds () {};
 	});
 	*/
-</script>
 
-<script>
+
 	//UnityLoader.compatibilityCheck = function(e,t,r){ t(); };
 	//var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json");
 
-	createUnityInstance(document.querySelector("#unity-canvas"),{
+	var unityInstance = createUnityInstance(document.querySelector("#unity-canvas"),{
 
 		dataUrl: "Build/FinalBuild.data.br",
 
@@ -57,8 +57,8 @@
 
 	});
 
-	vkBridge.send("VKWebAppInit", {});
-	var userId = new URL(window.location.href).searchParams.get('viewer_id');
+	//vkBridge.send("VKWebAppInit", {});
+	//var userId = new URL(window.location.href).searchParams.get('viewer_id');
 
 	function Index_SetUserId() {
 		unityInstance.SendMessage('VKController', 'SetUserId', userId);
