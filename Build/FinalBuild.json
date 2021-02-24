@@ -1,7 +1,7 @@
 {
 "companyName": "Oblivion",
 "productName": "Roguelike",
-"productVersion": "1.1",
+"productVersion": "1.2",
 "dataUrl": "FinalBuild.data.unityweb",
 "wasmCodeUrl": "FinalBuild.wasm.code.unityweb",
 "wasmFrameworkUrl": "FinalBuild.wasm.framework.unityweb",

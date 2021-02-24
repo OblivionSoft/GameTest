@@ -4,9 +4,13 @@
 	<meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title> Roguelike </title>
 
-<script src="Build/UnityLoader.js"></script>
- 
+	<style>
+		body { margin: 0; }
+		#unityContainer { width: 100vw; height: 100vh; }
+		canvas { width: 100%; height: 100%; }
+	</style>
 
+<script src="Build/UnityLoader.js"></script>
 <script src="vkBridge.js"></script>
 <script type="text/javascript" src="//vk.com/js/api/xd_connection.js?2" charset="utf-8"></script>
 <script type="text/javascript" src="//ad.mail.ru/static/admanhtml/rbadman-html5.min.js" charset="utf-8"></script>
@@ -34,13 +38,13 @@
 	*/
 
 	UnityLoader.compatibilityCheck = function(e,t,r){ t(); };
-	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json");
+	var game = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json");
 
 	//vkBridge.send("VKWebAppInit", {});
 	//var userId = new URL(window.location.href).searchParams.get('viewer_id');
 
-	function Index_SetUserId() {
-		unityInstance.SendMessage('VKController', 'SetUserId', userId);
+	/*function Index_SetUserId() {
+		game.SendMessage('VKController', 'SetUserId', userId);
 	}
 	
 	function Index_WallPost(level) {
@@ -50,6 +54,7 @@
 			"attachments": "photo527676448_457239040,https://vk.com/app7760038_239889416"
 		});
 	}
+	*/
 
 	//function Index_ShowAd() {
 	//}
@@ -69,7 +74,6 @@
 </head>
 
 <body>
- <div id="unityContainer" style="padding: 0px; position: absolute; height: 100vh; width: 100vw"></div>
- 
+	<div id="unityContainer"></div>
 </body>
 </html>
