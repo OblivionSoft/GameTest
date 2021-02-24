@@ -1,40 +1,75 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-us">
-  <head>
- 
-   <meta charset="utf-8">
-  
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   
- <title>Unity WebGL Player | Roguelike</title>
+<head>
+	<meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title> Roguelike </title>
+
+<script src="Build/UnityLoader.js"></script>
  
 
- </head>
+<script src="vkBridge.js"></script>
+<script type="text/javascript" src="//vk.com/js/api/xd_connection.js?2" charset="utf-8"></script>
+<script type="text/javascript" src="//ad.mail.ru/static/admanhtml/rbadman-html5.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="//vk.com/js/api/adman_init.js" charset="utf-8"></script>
+
+<script>
+	/*window.addEventListener('load', function() {
+	admanInit({
+		user_id: userId,
+		app_id: 7760038,
+		mobile: true,
+		type: 'preloader',
+		params: {preview: 1}
+	}, onAdsReady, onNoAds);
+
+	function onAdsReady (adman) {
+		adman.onStarted(function () {});
+		adman.onCompleted(function() {});
+		adman.onSkipped(function() {});      
+		adman.onClicked(function() {}); 
+		adman.start('preroll');
+	};
+	function onNoAds () {};
+	});
+	*/
+
+	UnityLoader.compatibilityCheck = function(e,t,r){ t(); };
+	var unityInstance = UnityLoader.instantiate("unityContainer", "Build/FinalBuild.json");
+
+	//vkBridge.send("VKWebAppInit", {});
+	//var userId = new URL(window.location.href).searchParams.get('viewer_id');
+
+	function Index_SetUserId() {
+		unityInstance.SendMessage('VKController', 'SetUserId', userId);
+	}
+	
+	function Index_WallPost(level) {
+		vkBridge.send("VKWebAppShowWallPostBox", {
+			"owner_id": userId,
+			"message": "Мой рекорд: " + level + " уровень!",
+			"attachments": "photo527676448_457239040,https://vk.com/app7760038_239889416"
+		});
+	}
+
+	//function Index_ShowAd() {
+	//}
+
+		//vkBridge.send("VKWebAppJoinGroup", {
+		//	"group_id": MY GROUP ID
+		//});
+
+	//function Index_AddToFavorites() {
+		//vkBridge.send("VKWebAppAddToFavorites");
+	//}
+	
+	//function Index_InviteFriend() {
+		//bridge.sendPromise("VKWebAppShowInviteBox");
+	//}
+</script>
+</head>
+
+<body style="text-align: center">
+ <div id="unityContainer" style="width: 900px; height: 600px; margin: auto"></div>
  
-
-
- <body style="text-align: center">
- 
-   <canvas id="unity-canvas" style="width: 900px; height: 600px; background: #262020"></canvas>
-   
-
- <script src="Build/FinalBuild.loader.js"></script>
-
-
- 
-   <script>
-      
-createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/FinalBuild.data.br",
-        frameworkUrl: "Build/FinalBuild.framework.js.br",
-        codeUrl: "Build/FinalBuild.wasm.br",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Oblivion",
-        productName: "Roguelike",
-        productVersion: "1.0",
-      });
-  
-  </script>
-
- </body>
+</body>
 </html>
